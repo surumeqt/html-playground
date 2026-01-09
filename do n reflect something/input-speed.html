@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Typing Speed Tracker</title>
+</head>
+<body>
+  <form>
+    <label for="username">Type a thing or two:</label>
+    <input type="text" id="username" />
+  </form>
+
+  <p id="result">Typing speed: </p>
+
+  <script>
+    const input = document.getElementById("username");
+    const result = document.getElementById("result");
+
+    let startTime = null;
+    let endTime = null;
+    let typingSpeed = 0;
+
+    input.addEventListener("input", (e) => {
+      const textLength = e.target.value.length;
+
+      if (textLength === 1) {
+        // First keystroke
+        startTime = new Date().getTime();
+      } else if (textLength > 1) {
+        // Last keystroke time
+        endTime = new Date().getTime();
+
+        // Calculate speed (chars per second)
+        const timeDiff = (endTime - startTime) / 1000; // seconds
+        typingSpeed = (textLength / timeDiff).toFixed(2);
+
+        result.textContent = `Typing speed: ${typingSpeed} chars/sec`;
+      }
+    });
+  </script>
+</body>
+</html>

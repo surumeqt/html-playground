@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .sidebar {
+            background-color: aqua;
+            padding: 20px;
+            max-width: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .sidebar-header {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .sidebar-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-nav li {
+            margin-bottom: 20px;
+        }
+        .sidebar-nav a {
+            text-decoration: none;
+            color: black;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .sidebar-nav a:hover {
+            background-color: #ddd;
+        }
+        .sidebar-nav img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        .sidebar-footer {
+            text-align: center;
+        }
+        .sidebar-footer button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .sidebar-footer button:hover {
+            background-color: #d32f2f;
+        }
+        .sidebar-footer img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+       @media (max-width: 465px) {
+            .sidebar {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 65px;
+                height: 65px;
+                max-width: 65px;
+                border-radius: 50%;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                z-index: 1000;
+                overflow: hidden;
+            }
+
+            .sidebar.active {
+                width: 90px;
+                height: auto;
+                max-height: 90vh;
+                border-radius: 45px;
+                padding: 20px 10px;
+                overflow-y: auto;
+            }
+            .sidebar.active .sidebar-header { 
+                display: none;
+            }
+            .sidebar-nav a {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .sidebar-nav img {
+                margin-right: 0;
+                margin-bottom: 5px;
+                width: 25px;
+                height: 25px;
+            }
+
+            .sidebar-nav span {
+                font-size: 10px;
+                font-weight: bold;
+            }
+
+            .sidebar-footer button {
+                flex-direction: column;
+                background: transparent;
+                color: #f44336;
+                padding: 5px;
+            }
+
+            .sidebar-footer img {
+                margin-right: 0;
+                margin-bottom: 3px;
+            }
+
+            .sidebar-header h2,
+            .sidebar-nav,
+            .sidebar-footer {
+                display: none;
+            }
+
+            .sidebar.active .sidebar-nav,
+            .sidebar.active .sidebar-footer {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Sidebar Title</h2>
+            <button id="menu-toggle">
+                <img src="https://placehold.co/50x50" alt="menu">
+            </button>
+        </div>
+        <div class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="https://placehold.co/50x50" alt="dashboard">
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="https://placehold.co/50x50" alt="dashboard">
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">                        
+                        <img src="https://placehold.co/50x50" alt="dashboard">
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="https://placehold.co/50x50" alt="dashboard">
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="https://placehold.co/50x50" alt="dashboard">
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="https://placehold.co/50x50" alt="dashboard">
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar-footer">
+            <button id="logout-btn">
+                <img src="https://placehold.co/50x50" alt="close">
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+    <script>
+        const sidebar = document.querySelector('.sidebar');
+        const menuToggle = document.getElementById('menu-toggle');
+
+        menuToggle.addEventListener('click', () => {
+            // Toggle the 'active' class on the sidebar
+            sidebar.classList.toggle('active');
+        });
+
+        // Optional: Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

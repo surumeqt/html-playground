@@ -1,0 +1,50 @@
+<style>
+.carousel-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 50px auto;
+  overflow: hidden;
+  background: #f4f4f4;
+  border: 2px solid #ddd;
+  padding: 10px 0;
+}
+
+.carousel-track {
+  display: flex;
+  width: calc(150px * 8 + 80px);
+  animation: scroll-right 20s linear infinite;
+}
+
+.carousel-track img {
+  width: 150px;
+  height: 100px;
+  margin: 0 10px;
+  border-radius: 8px;
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(calc(-150px * 4 - 40px));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+</style>
+
+<div class="carousel-container">
+  <div class="carousel-track">
+    <img src="https://placehold.co/150x100/ff7f7f/333333?text=1" alt="1">
+    <img src="https://placehold.co/150x100/7fbfff/333333?text=2" alt="2">
+    <img src="https://placehold.co/150x100/7fff7f/333333?text=3" alt="3">
+    <img src="https://placehold.co/150x100/ffbf7f/333333?text=4" alt="4">
+    <img src="https://placehold.co/150x100/ff7f7f/333333?text=1" alt="1">
+    <img src="https://placehold.co/150x100/7fbfff/333333?text=2" alt="2">
+    <img src="https://placehold.co/150x100/7fff7f/333333?text=3" alt="3">
+    <img src="https://placehold.co/150x100/ffbf7f/333333?text=4" alt="4">
+  </div>
+</div>
